@@ -58,7 +58,7 @@
         <p>    Virginia Tech, Blacksburg— Expected Graduation 2028</p>
         <p>         Major: Computer Science</p>
         <p>         GPA: 3.86</p>
-        <p>The current day and time is <code>currentDay()</code></p>
+        <p id="current-date-time"></p>
     </div>
     <div class="tab-content" id="content-1">
         <h1>Auto Clicker Project</h1>
@@ -102,6 +102,7 @@
 
         // By default, show the first tab's content
         showTabContent(0);
+        document.getElementById('current-date-time').textContent = 'The current day and time is' + currentDay();
     </script>
 </body>
 </html>
