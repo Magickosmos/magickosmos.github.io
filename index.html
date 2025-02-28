@@ -18,11 +18,12 @@
     <!-- Tab content sections -->
     <div class="tab-content" id="content-0">
         <h1>Alexander Smith,</h1>
+        <img src="images/Headshot.JPG">
         <h2>Education:</h2>
-            <p>Virginia Tech, Blacksburg— Expected Graduation 2028</p>
-            <p>Major: Computer Science</p>
-            <p>GPA: 3.86</p>
-            <p id="current-date-time"></p>
+        <p>Virginia Tech, Blacksburg— Expected Graduation 2028</p>
+        <p>Major: Computer Science</p>
+        <p>GPA: 3.86</p>
+        <p id="current-date-time"></p>
     </div>
     <div class="tab-content" id="content-1">
         <h1>Auto Clicker Project</h1>
@@ -60,7 +61,7 @@
             const hours = String(now.getHours()).padStart(2, '0');
             const minutes = String(now.getMinutes()).padStart(2, '0');
             const seconds = String(now.getSeconds()).padStart(2, '0');
-            const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+            const formattedDate = `${hours}:${minutes}:${seconds} ${year}-${month}-${day}`;
             return formattedDate;
         }
 

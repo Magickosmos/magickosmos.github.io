@@ -39,3 +39,7 @@ body {
 .active-content {
     display: block;
 }
+
+p {
+    text-indent: 30px;
+}
