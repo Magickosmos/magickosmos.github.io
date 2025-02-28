@@ -10,6 +10,7 @@
             margin: 0;
             padding: 0;
             background-color: gray;
+            color: white;
         }
         .tabs {
             display: flex;
@@ -52,14 +53,18 @@
 
     <!-- Tab content sections -->
     <div class="tab-content" id="content-0">
-        <h1>Alexander Smith, VT student</h1>
-        <p>Currently a Freshmen at VT pursuing a degree in CS</p>
+        <h1>Alexander Smith,</h1>
+        <h2>Education:</h2>
+        <p>    Virginia Tech, Blacksburg— Expected Graduation 2028</p>
+        <p>         Major: Computer Science</p>
+        <p>         GPA: 3.86</p>
+        <p>The current day and time is <code>currentDay()</code></p>
     </div>
     <div class="tab-content" id="content-1">
         <h1>Auto Clicker Project</h1>
-        <p>Main functionality consists of two seperate python files. 
-            One named Click_Playback records where you click on the screen and can be replayed by pressing "p". 
-            Color Clicker clicks the first instance of a color when you press "p". In order to select a color just click your desired color and press "l" to lock that color.</p>
+        <p>Main functionality consists of two seperate python files.</p>
+        <p>    One named Click_Playback records where you click on the screen and can be replayed by pressing "p".</p>
+        <p>    Color Clicker clicks the first instance of a color when you press "p". In order to select a color just click your desired color and press "l" to lock that color.</p>
     </div>
     <div class="tab-content" id="content-2">
         <h1>Vision Project</h1>
@@ -81,6 +86,18 @@
 
             // Add the active class to the clicked tab
             allTabs[index].classList.add('active-tab');
+        }
+
+        function currentDay() {
+            const now = new Date();
+            const year = now.getFullYear();
+            const month = String(now.getMonth() + 1).padStart(2, '0'); // Month is 0-indexed
+            const day = String(now.getDate()).padStart(2, '0');
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+            return formattedDate;
         }
 
         // By default, show the first tab's content
