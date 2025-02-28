@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Tabbed Website</title>
+    <title>Magickosmos Portfolio</title>
     <style>
-        /* Basic styles for layout */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -45,27 +44,26 @@
 
     <!-- Tab navigation -->
     <div class="tabs">
-        <div class="tab" onclick="showTabContent(0)">Tab 1</div>
-        <div class="tab" onclick="showTabContent(1)">Tab 2</div>
-        <div class="tab" onclick="showTabContent(2)">Tab 3</div>
+        <div class="tab" onclick="showTabContent(0)">Auto Clicker</div>
+        <div class="tab" onclick="showTabContent(1)">Web Scrapper</div>
+        <div class="tab" onclick="showTabContent(2)">Vision</div>
     </div>
 
     <!-- Tab content sections -->
     <div class="tab-content" id="content-0">
-        <h1>Content for Tab 1</h1>
-        <p>This is the content displayed when Tab 1 is clicked.</p>
+        <h1>Auto Clicker Project</h1>
+        <p></p>
     </div>
     <div class="tab-content" id="content-1">
-        <h1>Content for Tab 2</h1>
+        <h1>Web Scrapper Project</h1>
         <p>This is the content displayed when Tab 2 is clicked.</p>
     </div>
     <div class="tab-content" id="content-2">
-        <h1>Content for Tab 3</h1>
+        <h1>Vision Project</h1>
         <p>This is the content displayed when Tab 3 is clicked.</p>
     </div>
 
     <script>
-        // Function to show content based on the clicked tab
         function showTabContent(index) {
             // Hide all content sections
             let allContent = document.querySelectorAll('.tab-content');
