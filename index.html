@@ -1,12 +1,89 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple HTML Page</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Simple Tabbed Website</title>
+    <style>
+        /* Basic styles for layout */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .tabs {
+            display: flex;
+            cursor: pointer;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            justify-content: space-around;
+        }
+        .tab {
+            padding: 10px 20px;
+            text-align: center;
+            background-color: #444;
+            border: 1px solid #333;
+        }
+        .tab:hover {
+            background-color: #555;
+        }
+        .tab-content {
+            padding: 20px;
+            display: none;
+        }
+        .active-tab {
+            background-color: #333;
+            font-weight: bold;
+        }
+        .active-content {
+            display: block;
+        }
+    </style>
 </head>
 <body>
-    <h1>Personal project to develop some html skills</h1>
-    <p>Most of my work in the past has been in Java, Python, and C#</p>
+
+    <!-- Tab navigation -->
+    <div class="tabs">
+        <div class="tab" onclick="showTabContent(0)">Tab 1</div>
+        <div class="tab" onclick="showTabContent(1)">Tab 2</div>
+        <div class="tab" onclick="showTabContent(2)">Tab 3</div>
+    </div>
+
+    <!-- Tab content sections -->
+    <div class="tab-content" id="content-0">
+        <h1>Content for Tab 1</h1>
+        <p>This is the content displayed when Tab 1 is clicked.</p>
+    </div>
+    <div class="tab-content" id="content-1">
+        <h1>Content for Tab 2</h1>
+        <p>This is the content displayed when Tab 2 is clicked.</p>
+    </div>
+    <div class="tab-content" id="content-2">
+        <h1>Content for Tab 3</h1>
+        <p>This is the content displayed when Tab 3 is clicked.</p>
+    </div>
+
+    <script>
+        // Function to show content based on the clicked tab
+        function showTabContent(index) {
+            // Hide all content sections
+            let allContent = document.querySelectorAll('.tab-content');
+            allContent.forEach(content => content.classList.remove('active-content'));
+
+            // Remove the active class from all tabs
+            let allTabs = document.querySelectorAll('.tab');
+            allTabs.forEach(tab => tab.classList.remove('active-tab'));
+
+            // Show the selected content section
+            document.getElementById(`content-${index}`).classList.add('active-content');
+
+            // Add the active class to the clicked tab
+            allTabs[index].classList.add('active-tab');
+        }
+
+        // By default, show the first tab's content
+        showTabContent(0);
+    </script>
 </body>
 </html>
