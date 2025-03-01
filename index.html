@@ -37,6 +37,15 @@
     </div>
 
     <script>
+        // Get the canvas element and set its width and height
+        const canvas = document.getElementById('backgroundCanvas');
+        const ctx = canvas.getContext('2d');
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        
+        canvas.width = width;
+        canvas.height = height;
+
         function showTabContent(index) {
             // Hide all content sections
             let allContent = document.querySelectorAll('.tab-content');
@@ -65,15 +74,25 @@
             return formattedDate;
         }
 
-        function randomizeBackground() {
-            const colors = ['black', 'blue'];
-            const randomColor = colors[Math.floor(Math.random() * colors.length)];
-            document.body.style.backgroundColor = randomColor;
+        function getRandomColor() {
+            const colors = ['black', 'darkblue'];
+            return colors[Math.floor(Math.random() * colors.length)];
         }
 
-        // Call the function on page load
-        window.onload = randomizeBackground;
-        setInterval(randomizeBackground, 3000);
+        // Function to fill the canvas with random black or dark blue pixels
+        function createRandomBackground() {
+            const pixelSize = 10; // Size of each pixel block
+            for (let x = 0; x < width; x += pixelSize) {
+                for (let y = 0; y < height; y += pixelSize) {
+                    const color = getRandomColor();
+                    ctx.fillStyle = color;
+                    ctx.fillRect(x, y, pixelSize, pixelSize);
+                }
+            }
+        }
+        
+        createRandomBackground();
+        setInterval(createRandomBackground, 2000);
         showTabContent(0);
         document.getElementById('current-date-time').textContent = 'The current day and time is ' + currentDay();
     </script>
