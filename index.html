@@ -18,7 +18,7 @@
 
     <!-- Tab content sections -->
     <div class="tab-content" id="content-0">
-        <h1>Alexander Smith, Commit 19</h1>
+        <h1>Alexander Smith, Commit 20</h1>
         <img src="images/Headshot.JPG" width="200">
         <h2>Education:</h2>
         <p>Virginia Tech, Blacksburg— Expected Graduation 2028</p>
@@ -78,10 +78,11 @@
         // Function to fill the canvas with random black or dark gray pixels
         function createRandomBackground() {
             const pixelSize = 100; // Size of each pixel block
+            var shift = shift+1;
             for (let x = 0; x < width; x += pixelSize) {
                 for (let y = 0; y < height; y += pixelSize) {
                     if (((x + y) / pixelSize) % 2 == 0) {
-                        var color = 'black';  
+                        var color = 'DimGray';  
                     } 
                     else {
                         var color = 'gray';
@@ -92,6 +93,7 @@
             }
         }
 
+        shift = 0;
         createRandomBackground();
         setInterval(createRandomBackground, 2000);
         showTabContent(0);
