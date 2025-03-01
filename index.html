@@ -29,13 +29,13 @@
     </div>
     <div class="tab-content" id="content-1">
         <h1>Auto Clicker Project</h1>
-        <p>Main functionality consists of two seperate python files.</p>
+        <p>Main functionality consists of two separate python files.</p>
         <p>One named Click_Playback records where you click on the screen and can be replayed by pressing "p".</p>
-        <p>Color Clicker clicks the first instance of a color when you press "p". In order to select a color just click your desired color and press "l" to lock that color.</p>
+        <p>Color Clicker clicks the first instance of a color when you press "p". In order to select a color, just click your desired color and press "l" to lock that color.</p>
     </div>
     <div class="tab-content" id="content-2">
         <h1>Vision Project</h1>
-        <p>Project works with transferring BMP files through various different color filters to try and speed up the process of defect detection</p>
+        <p>Project works with transferring BMP files through various different color filters to try and speed up the process of defect detection.</p>
     </div>
 
     <script>
@@ -48,22 +48,19 @@
         canvas.width = width;
         canvas.height = height;
 
+        // Function to show the tab content
         function showTabContent(index) {
-            // Hide all content sections
             let allContent = document.querySelectorAll('.tab-content');
             allContent.forEach(content => content.classList.remove('active-content'));
 
-            // Remove the active class from all tabs
             let allTabs = document.querySelectorAll('.tab');
             allTabs.forEach(tab => tab.classList.remove('active-tab'));
 
-            // Show the selected content section
             document.getElementById(`content-${index}`).classList.add('active-content');
-
-            // Add the active class to the clicked tab
             allTabs[index].classList.add('active-tab');
         }
 
+        // Get current date and time
         function currentDay() {
             const now = new Date();
             const year = now.getFullYear();
@@ -77,26 +74,38 @@
         }
 
         let rippleSize = 0;
-        let rippleActive = false;
         const maxRippleSize = 100;
+        let rippleActive = false;
 
         function rippleEffect(x, y) {
-        const rippleInterval = setInterval(() => {
-        ctx.fillStyle = 'white';
-        ctx.beginPath();
-        ctx.arc(x, y, rippleSize, 0, 2 * Math.PI);
-        ctx.fill();
+            if (rippleActive) return;  // Prevent multiple ripple effects
 
-        rippleSize += 2;
+            rippleActive = true;
 
-        if (rippleSize > maxRippleSize) {
-            clearInterval(rippleInterval);
-            rippleSize = 0;
-            rippleActive = false;
+            function animateRipple() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);  // Clear the canvas to redraw it
+
+                // Draw the ripple
+                ctx.fillStyle = 'white';
+                ctx.beginPath();
+                ctx.arc(x, y, rippleSize, 0, 2 * Math.PI);
+                ctx.fill();
+
+                rippleSize += 2;
+
+                // Continue the ripple effect until it reaches the max size
+                if (rippleSize < maxRippleSize) {
+                    requestAnimationFrame(animateRipple);  // Continue animating
+                } else {
+                    rippleSize = 0;
+                    rippleActive = false;
+                }
+            }
+
+            animateRipple();  // Start the ripple animation
         }
-    }, 20);
-}
 
+        // Set up the canvas and click event listener
         canvas.addEventListener('click', function(event) {
             const rect = canvas.getBoundingClientRect();
             const x = event.clientX - rect.left;
@@ -106,10 +115,11 @@
             rippleEffect(x, y);
         });
 
+        // Display current time and initialize canvas
         document.getElementById('current-date-time').textContent = 'The current day and time is ' + currentDay();
         showTabContent(0);
         ctx.fillStyle = 'black';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillRect(0, 0, canvas.width, canvas.height);  // Set background to black
     </script>
 </body>
 </html>
