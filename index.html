@@ -61,11 +61,19 @@
             const hours = String(now.getHours()).padStart(2, '0');
             const minutes = String(now.getMinutes()).padStart(2, '0');
             const seconds = String(now.getSeconds()).padStart(2, '0');
-            const formattedDate = `${hours}:${minutes}:${seconds} ${year}-${month}-${day}`;
+            const formattedDate = `${hours}:${minutes}:${seconds} ${day}/${month}/${year}`;
             return formattedDate;
         }
 
-        // By default, show the first tab's content
+        function randomizeBackground() {
+            const colors = ['black', 'blue'];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            document.body.style.backgroundColor = randomColor;
+        }
+
+        // Call the function on page load
+        window.onload = randomizeBackground;
+        setInterval(randomizeBackground, 3000);
         showTabContent(0);
         document.getElementById('current-date-time').textContent = 'The current day and time is ' + currentDay();
     </script>
