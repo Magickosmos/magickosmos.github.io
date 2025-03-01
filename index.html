@@ -18,7 +18,7 @@
 
     <!-- Tab content sections -->
     <div class="tab-content" id="content-0">
-        <h1>Alexander Smith, Commit 23</h1>
+        <h1>Alexander Smith, Commit 24</h1>
         <img src="images/Headshot.JPG" width="200">
         <h2>Education:</h2>
         <p>Virginia Tech, Blacksburg— Expected Graduation 2028</p>
@@ -72,34 +72,29 @@
             const minutes = String(now.getMinutes()).padStart(2, '0');
             const seconds = String(now.getSeconds()).padStart(2, '0');
             const formattedDate = `${hours}:${minutes}:${seconds} ${day}/${month}/${year}`;
-            return formattedDate;
+            document.getElementById('current-date-time').textContent = 'The current day and time is ' + currentDay();
         }
 
-        // Function to fill the canvas with random black or dark gray pixels
-        let shift = 0;
-
-        function createRandomBackground() {
-            const pixelSize = 100; // Size of each pixel block
-            shift++;
-            for (let x = 0; x < width; x += pixelSize) {
-                for (let y = 0; y < height; y += pixelSize) {
-                    let color;
-                    if (((x + y) / pixelSize + shift) % 2 == 0) {
-                        color = 'Gray';  
-                    } 
-                    else {
-                        color = 'DimGray';
-                    }
-                    ctx.fillStyle = color;
-                    ctx.fillRect(x, y, pixelSize, pixelSize);
+        function rippleEffect(x, y){
+            for(let i = 0; i < 100; i++){
+                ctx.fillStyle = 'white';
+                for (let a = 0; a <= 360; a++){
+                    ctx.fillRect(x + Math.floor(Math.cos(a) * i), y + Math.floor(Math.sin(a) * i), 1, 1);
                 }
             }
         }
 
-        createRandomBackground();
-        setInterval(createRandomBackground, 6000);
+        setInterval(currentDay, 1000);
         showTabContent(0);
-        document.getElementById('current-date-time').textContent = 'The current day and time is ' + currentDay();
+        ctx.fillStyle = 'black';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        canvas.addEventListener('click', function(event) {
+            const x = event.clientX; // X position of the click
+            const y = event.clientY; // Y position of the click
+
+            rippleEffect(x, y);
+        });
     </script>
 </body>
 </html>
