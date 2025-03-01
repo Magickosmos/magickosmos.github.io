@@ -18,7 +18,7 @@
 
     <!-- Tab content sections -->
     <div class="tab-content" id="content-0">
-        <h1>Alexander Smith, Commit 27</h1>
+        <h1>Alexander Smith, Commit 28</h1>
         <img src="images/Headshot.JPG" width="200">
         <h2>Education:</h2>
         <p>Virginia Tech, Blacksburg— Expected Graduation 2028</p>
@@ -76,14 +76,26 @@
             return formattedDate;
         }
 
-        function rippleEffect(x, y){
-            for(let i = 0; i < 100; i++){
-                ctx.fillStyle = 'white';
-                for (let a = 0; a <= 360; a++){
-                    ctx.fillRect(x + Math.floor(Math.cos(a) * i), y + Math.floor(Math.sin(a) * i), 1, 1);
-                }
-            }
+        let rippleSize = 0;
+        let rippleActive = false;
+        const maxRippleSize = 100;
+
+        function rippleEffect(x, y) {
+        const rippleInterval = setInterval(() => {
+        ctx.fillStyle = 'white';
+        ctx.beginPath();
+        ctx.arc(x, y, rippleSize, 0, 2 * Math.PI);
+        ctx.fill();
+
+        rippleSize += 2;
+
+        if (rippleSize > maxRippleSize) {
+            clearInterval(rippleInterval);
+            rippleSize = 0;
+            rippleActive = false;
         }
+    }, 20);
+}
 
         canvas.addEventListener('click', function(event) {
             const rect = canvas.getBoundingClientRect();
