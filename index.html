@@ -18,7 +18,7 @@
 
     <!-- Tab content sections -->
     <div class="tab-content" id="content-0">
-        <h1>Alexander Smith, Commit 26</h1>
+        <h1>Alexander Smith, Commit 27</h1>
         <img src="images/Headshot.JPG" width="200">
         <h2>Education:</h2>
         <p>Virginia Tech, Blacksburg— Expected Graduation 2028</p>
@@ -67,7 +67,7 @@
         function currentDay() {
             const now = new Date();
             const year = now.getFullYear();
-            const month = String(now.getMonth() + 1).padStart(2, '0'); // Month is 0-indexed
+            const month = String(now.getMonth() + 1).padStart(2, '0');
             const day = String(now.getDate()).padStart(2, '0');
             const hours = String(now.getHours()).padStart(2, '0');
             const minutes = String(now.getMinutes()).padStart(2, '0');
@@ -84,18 +84,19 @@
             }
         }
 
-        document.getElementById('current-date-time').textContent = 'The current day and time is ' + currentDay()
-        showTabContent(0);
-        ctx.fillStyle = 'black';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
         canvas.addEventListener('click', function(event) {
+            const rect = canvas.getBoundingClientRect();
             const x = event.clientX - rect.left;
             const y = event.clientY - rect.top;
 
-            document.getElementById('click-pose').textContent = x + ', ' + y
+            document.getElementById('click-pose').textContent = x + ', ' + y;
             rippleEffect(x, y);
         });
+
+        document.getElementById('current-date-time').textContent = 'The current day and time is ' + currentDay();
+        showTabContent(0);
+        ctx.fillStyle = 'black';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
     </script>
 </body>
 </html>
