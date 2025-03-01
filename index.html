@@ -18,7 +18,7 @@
 
     <!-- Tab content sections -->
     <div class="tab-content" id="content-0">
-        <h1>Alexander Smith, Commit 24</h1>
+        <h1>Alexander Smith, Commit 26</h1>
         <img src="images/Headshot.JPG" width="200">
         <h2>Education:</h2>
         <p>Virginia Tech, Blacksburg— Expected Graduation 2028</p>
@@ -84,14 +84,14 @@
             }
         }
 
-        setInterval(document.getElementById('current-date-time').textContent = 'The current day and time is ' + currentDay(), 1000);
+        document.getElementById('current-date-time').textContent = 'The current day and time is ' + currentDay()
         showTabContent(0);
         ctx.fillStyle = 'black';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         canvas.addEventListener('click', function(event) {
-            const x = event.clientX; // X position of the click
-            const y = event.clientY; // Y position of the click
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
 
             document.getElementById('click-pose').textContent = x + ', ' + y
             rippleEffect(x, y);
