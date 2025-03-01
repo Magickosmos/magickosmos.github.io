@@ -18,7 +18,7 @@
 
     <!-- Tab content sections -->
     <div class="tab-content" id="content-0">
-        <h1>Alexander Smith, Commit 18</h1>
+        <h1>Alexander Smith, Commit 19</h1>
         <img src="images/Headshot.JPG" width="200">
         <h2>Education:</h2>
         <p>Virginia Tech, Blacksburg— Expected Graduation 2028</p>
@@ -75,21 +75,16 @@
             return formattedDate;
         }
 
-        function getRandomColor() {
-            const colors = ['black', 'gray'];
-            return colors[Math.floor(Math.random() * colors.length)];
-        }
-
-        // Function to fill the canvas with random black or dark blue pixels
+        // Function to fill the canvas with random black or dark gray pixels
         function createRandomBackground() {
             const pixelSize = 100; // Size of each pixel block
             for (let x = 0; x < width; x += pixelSize) {
                 for (let y = 0; y < height; y += pixelSize) {
-                    if(((x+y)/pixelSize)%2 == 0){
-                        const color = 'black';
-                    }
-                    else{
-                        const color = 'gray';
+                    if (((x + y) / pixelSize) % 2 == 0) {
+                        var color = 'black';  
+                    } 
+                    else {
+                        var color = 'gray';
                     }
                     ctx.fillStyle = color;
                     ctx.fillRect(x, y, pixelSize, pixelSize);
