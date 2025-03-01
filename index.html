@@ -25,6 +25,7 @@
         <p>Major: Computer Science</p>
         <p>GPA: 3.86</p>
         <p id="current-date-time"></p>
+        <p id="click-pose"></p>
     </div>
     <div class="tab-content" id="content-1">
         <h1>Auto Clicker Project</h1>
@@ -72,7 +73,6 @@
             const minutes = String(now.getMinutes()).padStart(2, '0');
             const seconds = String(now.getSeconds()).padStart(2, '0');
             const formattedDate = `${hours}:${minutes}:${seconds} ${day}/${month}/${year}`;
-            document.getElementById('current-date-time').textContent = 'The current day and time is ' + currentDay();
         }
 
         function rippleEffect(x, y){
@@ -84,7 +84,7 @@
             }
         }
 
-        setInterval(currentDay, 1000);
+        setInterval(document.getElementById('current-date-time').textContent = 'The current day and time is ' + currentDay(), 1000);
         showTabContent(0);
         ctx.fillStyle = 'black';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -93,6 +93,7 @@
             const x = event.clientX; // X position of the click
             const y = event.clientY; // Y position of the click
 
+            document.getElementById('click-pose').textContent = x + ', ' + y
             rippleEffect(x, y);
         });
     </script>
