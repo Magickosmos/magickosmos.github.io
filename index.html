@@ -18,7 +18,7 @@
 
     <!-- Tab content sections -->
     <div class="tab-content" id="content-0">
-        <h1>Alexander Smith, Commit 32</h1>
+        <h1>Alexander Smith, Commit 28</h1>
         <img src="images/Headshot.JPG" width="200">
         <h2>Education:</h2>
         <p>Virginia Tech, Blacksburg— Expected Graduation 2028</p>
@@ -44,7 +44,7 @@
         const ctx = canvas.getContext('2d');
         const width = window.innerWidth;
         const height = window.innerHeight;
-        
+
         canvas.width = width;
         canvas.height = height;
 
@@ -70,39 +70,45 @@
             const minutes = String(now.getMinutes()).padStart(2, '0');
             const seconds = String(now.getSeconds()).padStart(2, '0');
             const formattedDate = `${hours}:${minutes}:${seconds} ${day}/${month}/${year}`;
-            return formattedDate;
+            document.getElementById('current-date-time').textContent = 'The current day and time is ' + formattedDate;
         }
 
-        let rippleSize = 0;
+        // Ripple properties for each individual ripple
+        let ripples = [];
         const maxRippleSize = 100;
-        let rippleActive = false;
 
+        // Ripple effect function to add a new ripple at the click location
         function rippleEffect(x, y) {
-            if (rippleActive) return;
+            const ripple = {
+                x: x,
+                y: y,
+                size: 0,
+                maxSize: maxRippleSize,
+                growing: true
+            };
 
-            rippleActive = true;
+            // Add the new ripple to the array
+            ripples.push(ripple);
+        }
 
-            function animateRipple() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);  // Clear the canvas to redraw it
+        // Function to update and draw all ripples
+        function updateRipples() {
 
-                // Draw the ripple
+            // Loop through each ripple and draw it
+            ripples.forEach((ripple, index) => {
+                if (ripple.growing) {
+                    ripple.size += 2;
+                    if (ripple.size >= ripple.maxSize) {
+                        ripple.growing = false;
+                    }
+                }
+
+                // Draw the current ripple
                 ctx.fillStyle = 'white';
                 ctx.beginPath();
-                ctx.arc(x, y, rippleSize, 0, 2 * Math.PI);
+                ctx.arc(ripple.x, ripple.y, ripple.size, 0, 2 * Math.PI);
                 ctx.fill();
-
-                rippleSize += 2;
-
-                // Continue the ripple effect until it reaches the max size
-                if (rippleSize < maxRippleSize) {
-                    requestAnimationFrame(animateRipple);  // Continue animating
-                } else {
-                    rippleSize = 0;
-                    rippleActive = false;
-                }
-            }
-
-            animateRipple();  // Start the ripple animation
+            });
         }
 
         // Set up the canvas and click event listener
@@ -111,14 +117,19 @@
             const y = event.clientY;
 
             document.getElementById('click-pose').textContent = x + ', ' + y;
-            rippleEffect(x, y);
+            rippleEffect(x, y); 
         });
 
+        // Update function to continuously update ripples
+        function animate() {
+            updateRipples();
+            requestAnimationFrame(animate);  // Continuously call the animate function
+        }
+
         // Display current time and initialize canvas
-        document.getElementById('current-date-time').textContent = 'The current day and time is ' + currentDay();
+        setInterval(currentDay(), 1000)
         showTabContent(0);
-        ctx.fillStyle = 'black';
-        ctx.fillRect(0, 0, canvas.width, canvas.height);  // Set background to black
+        animate();  // Start the animation loop
     </script>
 </body>
 </html>
