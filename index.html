@@ -18,7 +18,7 @@
 
     <!-- Tab content sections -->
     <div class="tab-content" id="content-0">
-        <h1>Alexander Smith, Commit 40</h1>
+        <h1>Alexander Smith, Commit 41</h1>
         <img src="images/Headshot.JPG" width="200">
         <h2>Education:</h2>
         <p>Virginia Tech, Blacksburg— Expected Graduation 2028</p>
@@ -76,7 +76,7 @@
 
         // Ripple properties for each individual ripple
         let ripples = [];
-        const maxRippleSize = 1000;
+        const maxRippleSize = 100;
         let colorClicked;
 
         // Ripple effect function to add a new ripple at the click location
@@ -87,7 +87,7 @@
                 size: 0,
                 maxSize: maxRippleSize,
                 growing: true,
-                color: color
+                rippleColor: color
             };
 
             // Add the new ripple to the array
@@ -100,14 +100,14 @@
             // Loop through each ripple and draw it
             ripples.forEach((ripple, index) => {
                 if (ripple.growing) {
-                    ripple.size += 5/ripple.size;
+                    ripple.size += 2;
                     if (ripple.size >= ripple.maxSize) {
                         ripple.growing = false;
                     }
                 }
 
                 // Draw the current ripple
-                if(ripple.color = 'rgba(0, 0, 0, 0)'){
+                if(ripple.rippleColor = `rgba(0, 0, 0, 0)`){
                     ctx.fillStyle = 'white';
                 } else {
                     ctx.fillStyle = 'gray';
