@@ -7,14 +7,6 @@ body {
     position: relative;
 }
 
-body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: scroll;
-    position: relative; 
-}
-
 .tabs {
     display: flex;
     cursor: pointer;
