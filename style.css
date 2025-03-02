@@ -4,6 +4,8 @@ body {
     padding: 0;
     color: white;
     background-color: black;
+    z-index: 1;
+    position: relative;
 }
 
 body, html {
@@ -21,8 +23,8 @@ body, html {
     color: white;
     padding: 10px;
     justify-content: space-around;
-    z-index: 2;
     position: relative;
+    z-index: 10; /* Keep tabs above the canvas */
 }
 
 .tab {
@@ -30,42 +32,42 @@ body, html {
     text-align: center;
     background-color: #444;
     border: 1px solid #333;
-    z-index: 2; 
     position: relative;
+    z-index: 10; /* Ensure tabs stay above the canvas */
 }
 
 .tab:hover {
     background-color: #555;
-    z-index: 2; 
+    z-index: 10; /* Ensure hover effect stays above the canvas */
 }
 
 .tab-content {
     padding: 20px;
     display: none;
-    z-index: 2;
+    z-index: 10; /* Keep content above the canvas */
 }
 
 .active-tab {
     background-color: #333;
     font-weight: bold;
-    z-index: 2; 
+    z-index: 10; /* Ensure active tab stays above canvas */
 }
 
 .active-content {
     display: block;
-    z-index: 2;
+    z-index: 10; /* Keep active content above the canvas */
 }
 
 p {
     text-indent: 30px;
-    z-index: 2; 
+    z-index: 20; /* Make sure text is above canvas */
     position: relative;
 }
 
 img {
     max-width: 100%;
     height: auto;
-    z-index: 2;
+    z-index: 20; /* Ensure images stay above canvas */
     position: relative;
 }
 
@@ -73,5 +75,5 @@ canvas {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: -1;  /* Ensure canvas is behind everything else */
+    z-index: -1; /* Ensure canvas is behind all other elements */
 }
