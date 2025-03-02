@@ -44,6 +44,7 @@ body, html {
     padding: 20px;
     display: none;
     z-index: 10;
+    position: absolute;
 }
 
 .active-tab {
@@ -55,7 +56,6 @@ body, html {
 .active-content {
     display: block;
     z-index: 10;
-    position: relative;
 }
 
 p {
