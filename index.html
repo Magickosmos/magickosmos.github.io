@@ -16,7 +16,8 @@
 
     <!-- Tab content sections -->
     <div class="tab-content" id="content-0">
-        <h1>Alexander Smith, Commit 91</h1>
+        <h1 id="click-prompt">Try clicking around</h1>
+        <h1>Alexander Smith, Commit 92</h1>
         <img src="images/Headshot.JPG" width="200">
 
         <h2>Education:</h2>
@@ -133,6 +134,7 @@
             const color = pixel.data;
             colorClicked = `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${color[3] / 255})`;
 
+            document.getElementById('click-prompt').textContent = '';
             document.getElementById('click-pose').textContent = 'Clicked Position: ' + x + ', ' + y;
             document.getElementById('clicked-color').textContent = 'Clicked Color:' + colorClicked;
             rippleEffect(x, y, colorClicked); 
@@ -148,6 +150,7 @@
         setInterval(currentDay(), 1000)
         showTabContent(0);
         rippleEffect(canvas.width/2, canvas.height/2, `rgba(0, 0, 0, 0)`);
+        document.getElementById('click-prompt').style.textAlign = 'center';
         animate();  // Start the animation loop
     </script>
 </body>
