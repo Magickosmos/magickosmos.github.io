@@ -20,6 +20,7 @@ body, html {
     color: white;
     padding: 10px;
     justify-content: space-around;
+    z-index: 1;
 }
 
 .tab {
@@ -27,6 +28,7 @@ body, html {
     text-align: center;
     background-color: #444;
     border: 1px solid #333;
+    z-index: 1;
 }
 
 .tab:hover {
@@ -58,7 +60,7 @@ img {
 
 canvas {
     position: absolute;
-    top: 200px;
+    top: 0;
     left: 0;
     z-index: 0;
 }
