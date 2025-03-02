@@ -54,26 +54,26 @@ body, html {
 }
 
 .active-content {
-    display: block;
+    display: inline;
     z-index: 10;
 }
 
 p {
     text-indent: 30px;
     z-index: 20;
-    position: relative;
+    position: absolute;
 }
 
 img {
     max-width: 100%;
     height: auto;
     z-index: 20;
-    position: relative;
+    position: absolute;
 }
 
 canvas {
-    position: absolute;
     top: 0;
     left: 0;
     z-index: 5;
+    position: absolute;
 }
