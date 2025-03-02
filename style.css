@@ -5,6 +5,7 @@ body {
     color: white;
     background-color: black;
     z-index: 1;
+    position: relative;
 }
 
 body, html {
@@ -12,7 +13,7 @@ body, html {
     padding: 0;
     height: 100%;
     overflow: scroll;
-    z-index: 1;
+    position: relative; 
 }
 
 .tabs {
@@ -22,7 +23,8 @@ body, html {
     color: white;
     padding: 10px;
     justify-content: space-around;
-    z-index: 1;
+    z-index: 2;
+    position: relative;
 }
 
 .tab {
@@ -30,45 +32,46 @@ body, html {
     text-align: center;
     background-color: #444;
     border: 1px solid #333;
-    z-index: 1;
+    z-index: 2; 
+    position: relative;
 }
 
 .tab:hover {
     background-color: #555;
-    z-index: 1;
+    z-index: 2; 
 }
 
 .tab-content {
     padding: 20px;
     display: none;
-    z-index: 1;
+    z-index: 2;
 }
 
 .active-tab {
     background-color: #333;
     font-weight: bold;
-    z-index: 1;
+    z-index: 2; 
 }
 
 .active-content {
     display: block;
-    z-index: 1;
+    z-index: 2;
 }
 
 p {
     text-indent: 30px;
-    z-index: 1;
+    z-index: 2; 
 }
 
 img {
     max-width: 100%;
     height: auto;
-    z-index: 1;
+    z-index: 2;
 }
 
 canvas {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 0;
+    z-index: -1;  /* Ensure canvas is behind everything else */
 }
