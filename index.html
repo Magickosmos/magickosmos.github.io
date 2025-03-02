@@ -18,7 +18,7 @@
 
     <!-- Tab content sections -->
     <div class="tab-content" id="content-0">
-        <h1>Alexander Smith, Commit 52</h1>
+        <h1>Alexander Smith, Commit 53</h1>
         <img src="images/Headshot.JPG" width="200">
         <h2>Education:</h2>
         <p>Virginia Tech, Blacksburg— Expected Graduation 2028</p>
@@ -100,7 +100,7 @@
             // Loop through each ripple and draw it
             ripples.forEach((ripple, index) => {
                 if (ripple.growing) {
-                    ripple.size += 2;
+                    ripple.size += 5/(ripple.size+1);
                     if (ripple.size >= ripple.maxSize) {
                         ripple.growing = false;
                     }
@@ -110,7 +110,7 @@
                 if(ripple.rippleColor === `rgba(0, 0, 0, 0)`){
                     ctx.fillStyle = 'white';
                 } else {
-                    ctx.fillStyle = 'gray';
+                    ctx.fillStyle = 'black';
                 }
                 ctx.beginPath();
                 ctx.arc(ripple.x, ripple.y, ripple.size, 0, 2 * Math.PI);
