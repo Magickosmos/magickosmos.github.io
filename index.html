@@ -18,7 +18,7 @@
 
     <!-- Tab content sections -->
     <div class="tab-content" id="content-0">
-        <h1>Alexander Smith, Commit 38</h1>
+        <h1>Alexander Smith, Commit 40</h1>
         <img src="images/Headshot.JPG" width="200">
         <h2>Education:</h2>
         <p>Virginia Tech, Blacksburg— Expected Graduation 2028</p>
@@ -80,13 +80,14 @@
         let colorClicked;
 
         // Ripple effect function to add a new ripple at the click location
-        function rippleEffect(x, y) {
+        function rippleEffect(x, y, color) {
             const ripple = {
                 x: x,
                 y: y,
                 size: 0,
                 maxSize: maxRippleSize,
-                growing: true
+                growing: true,
+                color: color
             };
 
             // Add the new ripple to the array
@@ -106,7 +107,7 @@
                 }
 
                 // Draw the current ripple
-                if(colorClicked = 'rgba(0, 0, 0, 0)'){
+                if(ripple.color = 'rgba(0, 0, 0, 0)'){
                     ctx.fillStyle = 'white';
                 } else {
                     ctx.fillStyle = 'gray';
@@ -123,7 +124,7 @@
             const y = event.clientY;
             const pixel = ctx.getImageData(x, y, 1, 1);
             const color = pixel.data;
-            colorClicked = 'rgba(${color[0]}, ${color[1]}, ${color[2]}, ${color[3] / 255})';
+            colorClicked = `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${color[3] / 255})`;
 
             document.getElementById('click-pose').textContent = x + ', ' + y;
             document.getElementById('clicked-color').textContent = colorClicked;
