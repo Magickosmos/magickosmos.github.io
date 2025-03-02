@@ -26,6 +26,7 @@
         <p>GPA: 3.86</p>
         <p id="current-date-time"></p>
         <p id="click-pose"></p>
+        <p id="clicked-color"></pp>
     </div>
     <div class="tab-content" id="content-1">
         <h1>Auto Clicker Project</h1>
@@ -105,11 +106,7 @@
                 }
 
                 // Draw the current ripple
-                if (colorClicked === `rgba(0, 0, 0, 1)`) {
-                    ctx.fillStyle = 'white';
-                } else {
-                    ctx.fillStyle = 'grey';
-                }
+                ctx.fillStyle = 'white';
                 ctx.beginPath();
                 ctx.arc(ripple.x, ripple.y, ripple.size, 0, 2 * Math.PI);
                 ctx.fill();
@@ -124,6 +121,7 @@
             colorClicked = `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${color[3] / 255})`;
 
             document.getElementById('click-pose').textContent = x + ', ' + y;
+            document.getElementById('click-color').textContent = colorClicked;
             rippleEffect(x, y, colorClicked); 
         });
 
