@@ -43,7 +43,6 @@ body, html {
     padding: 20px;
     display: none;
     z-index: 2;
-    position: relative;
 }
 
 .active-tab {
@@ -60,12 +59,14 @@ body, html {
 p {
     text-indent: 30px;
     z-index: 2; 
+    position: relative;
 }
 
 img {
     max-width: 100%;
     height: auto;
     z-index: 2;
+    position: relative;
 }
 
 canvas {
