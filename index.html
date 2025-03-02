@@ -8,7 +8,6 @@
 </head>
 <body>
     <canvas id="backgroundCanvas"></canvas>
-    <canvas id="rippleCanvas"></canvas>
 
     <!-- Tab navigation -->
     <div class="tabs">
@@ -19,7 +18,7 @@
 
     <!-- Tab content sections -->
     <div class="tab-content" id="content-0">
-        <h1>Alexander Smith, Commit 29</h1>
+        <h1>Alexander Smith, Commit 32</h1>
         <img src="images/Headshot.JPG" width="200">
         <h2>Education:</h2>
         <p>Virginia Tech, Blacksburg— Expected Graduation 2028</p>
@@ -77,8 +76,6 @@
         let rippleSize = 0;
         const maxRippleSize = 100;
         let rippleActive = false;
-        const rippleCanvas = document.getElementById("rippleCanvas");
-
 
         function rippleEffect(x, y) {
             if (rippleActive) return;
@@ -86,13 +83,13 @@
             rippleActive = true;
 
             function animateRipple() {
-                rippleCanvas.clearRect(0, 0, canvas.width, canvas.height);  // Clear the canvas to redraw it
+                ctx.clearRect(0, 0, canvas.width, canvas.height);  // Clear the canvas to redraw it
 
                 // Draw the ripple
-                rippleCanvas.fillStyle = 'white';
-                rippleCanvas.beginPath();
-                rippleCanvas.arc(x, y, rippleSize, 0, 2 * Math.PI);
-                rippleCanvas.fill();
+                ctx.fillStyle = 'white';
+                ctx.beginPath();
+                ctx.arc(x, y, rippleSize, 0, 2 * Math.PI);
+                ctx.fill();
 
                 rippleSize += 2;
 
