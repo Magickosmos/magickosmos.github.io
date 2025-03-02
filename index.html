@@ -16,8 +16,9 @@
 
     <!-- Tab content sections -->
     <div class="tab-content" id="content-0">
-        <h1>Alexander Smith, Commit 90</h1>
+        <h1>Alexander Smith, Commit 91</h1>
         <img src="images/Headshot.JPG" width="200">
+
         <h2>Education:</h2>
         <p>Virginia Tech, Blacksburg— Expected Graduation 2028</p>
         <p>Major: Computer Science</p>
@@ -26,6 +27,8 @@
         <p>GPA: 4.55 |  Top 10% of Class</p>
         <h2>Awards:</h2>
         <p>Dean's List with Distinction Standing Fall 2024</p>
+
+        <h2>Site Data</h2>
         <p id="current-date-time"></p>
         <p id="click-pose"></p>
         <p id="clicked-color"></p>
@@ -130,8 +133,8 @@
             const color = pixel.data;
             colorClicked = `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${color[3] / 255})`;
 
-            document.getElementById('click-pose').textContent = x + ', ' + y;
-            document.getElementById('clicked-color').textContent = colorClicked;
+            document.getElementById('click-pose').textContent = 'Clicked Position: ' + x + ', ' + y;
+            document.getElementById('clicked-color').textContent = 'Clicked Color:' + colorClicked;
             rippleEffect(x, y, colorClicked); 
         });
 
@@ -144,6 +147,7 @@
         // Display current time and initialize canvas
         setInterval(currentDay(), 1000)
         showTabContent(0);
+        rippleEffect(canvas.width/2, canvas.height/2, `rgba(0, 0, 0, 0)`);
         animate();  // Start the animation loop
     </script>
 </body>
