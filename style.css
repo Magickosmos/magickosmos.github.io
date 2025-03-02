@@ -33,24 +33,29 @@ body, html {
 
 .tab:hover {
     background-color: #555;
+    z-index: 1;
 }
 
 .tab-content {
     padding: 20px;
     display: none;
+    z-index: 1;
 }
 
 .active-tab {
     background-color: #333;
     font-weight: bold;
+    z-index: 1;
 }
 
 .active-content {
     display: block;
+    z-index: 1;
 }
 
 p {
     text-indent: 30px;
+    z-index: 1;
 }
 
 img {
