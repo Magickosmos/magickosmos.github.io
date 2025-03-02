@@ -59,6 +59,10 @@ h1 {
     z-index: 10;
 }
 
+h2 {
+    z-index: 10;
+}
+
 img {
     max-width: 100%;
     height: auto;
