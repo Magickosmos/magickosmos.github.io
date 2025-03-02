@@ -4,8 +4,6 @@ body {
     padding: 0;
     color: white;
     background-color: black;
-    z-index: 1;
-    position: relative;
 }
 
 body, html {
@@ -45,6 +43,7 @@ body, html {
     padding: 20px;
     display: none;
     z-index: 2;
+    position: relative;
 }
 
 .active-tab {
