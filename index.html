@@ -18,7 +18,7 @@
 
     <!-- Tab content sections -->
     <div class="tab-content" id="content-0">
-        <h1>Alexander Smith, Commit 35</h1>
+        <h1>Alexander Smith, Commit 38</h1>
         <img src="images/Headshot.JPG" width="200">
         <h2>Education:</h2>
         <p>Virginia Tech, Blacksburg— Expected Graduation 2028</p>
@@ -122,7 +122,7 @@
             colorClicked = `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${color[3] / 255})`;
 
             document.getElementById('click-pose').textContent = x + ', ' + y;
-            document.getElementById('click-color').textContent = colorClicked;
+            document.getElementById('clicked-color').textContent = colorClicked;
             rippleEffect(x, y, colorClicked); 
         });
 
