@@ -4,6 +4,7 @@ body {
     padding: 0;
     color: white;
     background-color: black;
+    z-index: 1;
 }
 
 body, html {
