@@ -48,6 +48,8 @@ body {
 .active-content {
     display: block;
     z-index: 10;
+    background-color: black;
+    border-right: 2px solid grey;
 }
 
 p {
