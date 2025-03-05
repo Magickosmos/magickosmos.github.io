@@ -19,7 +19,10 @@
 
     <!-- Tab content sections -->
     <div class="tab-content" id="content-0">
-        <h1>Alexander Smith, Commit 94</h1>
+        <h1>Alexander Smith, Commit 95</h1>
+        <p>12420 Lynwood Drive</p>
+        <p>Glen Allen, VA 23059</p>
+        <p>Phone: (585) 483-6418</p>
         <img src="images/Headshot.JPG" width="200">
 
         <h2>Education:</h2>
@@ -28,10 +31,11 @@
         <p>GPA: 3.86</p>
         <p>Deep Run High School</p>
         <p>GPA: 4.55 |  Top 10% of Class</p>
+
         <h2>Awards:</h2>
         <p>Dean's List with Distinction Standing Fall 2024</p>
 
-        <h2>Site Data</h2>
+        <h2>Site Data:</h2>
         <p id="current-date-time"></p>
         <p id="click-pose"></p>
         <p id="clicked-color"></p>
@@ -80,8 +84,8 @@
             const hours = String(now.getHours()).padStart(2, '0');
             const minutes = String(now.getMinutes()).padStart(2, '0');
             const seconds = String(now.getSeconds()).padStart(2, '0');
-            const formattedDate = `${hours}:${minutes}:${seconds} ${day}/${month}/${year}`;
-            document.getElementById('current-date-time').textContent = 'The current day and time is ' + formattedDate;
+            const formattedDate = `${hours}:${minutes}:${seconds} ${month}/${day}/${year}`;
+            document.getElementById('current-date-time').textContent = 'You opened this site at ' + formattedDate;
         }
 
         // Ripple properties for each individual ripple
