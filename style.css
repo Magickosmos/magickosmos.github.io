@@ -12,7 +12,7 @@ body {
     cursor: pointer;
     background-color: #333;
     color: white;
-    padding: 0px;
+    padding: 10px;
     justify-content: space-around;
     position: relative;
     z-index: 10;
@@ -39,6 +39,7 @@ body {
     position: absolute;
     background-color: black;
     border-right: 2px solid grey;
+    padding-top: 0;
 }
 
 .active-tab {
