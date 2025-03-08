@@ -72,4 +72,5 @@ canvas {
     left: 0;
     z-index: 5;
     position: absolute;
+    border-bottom: 2px solid gray;
 }

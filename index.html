@@ -63,7 +63,6 @@
     <canvas id="backgroundCanvas"></canvas>
 
     <script>
-        // Get the canvas element and set its width and height
         const canvas = document.getElementById('backgroundCanvas');
         const ctx = canvas.getContext('2d');
         const textBox = document.getElementById('content-0');
@@ -71,7 +70,7 @@
         const width = window.outerWidth;
         const height = window.outerHeight;
         canvas.width = width;
-        canvas.height = Math.max(height, textBox.offsetHeight + 20);
+        canvas.height = height;
 
         // Function to show the tab content
         function showTabContent(index) {
@@ -170,6 +169,7 @@
         rippleEffect(canvas.width/2, canvas.height/2, `rgba(0, 0, 0, 0)`);
         document.getElementById('click-prompt').style.textAlign = 'center';
         animate();  // Start the animation loop
+        canvas.height = Math.max(height, textBox.offsetHeight + 40);
     </script>
 </body>
 </html>
