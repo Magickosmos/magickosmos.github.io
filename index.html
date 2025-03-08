@@ -19,18 +19,25 @@
 
     <!-- Tab content sections -->
     <div class="tab-content" id="content-0">
-        <h1>Alexander Smith, Commit 95</h1>
-        <p>12420 Lynwood Drive</p>
-        <p>Glen Allen, VA 23059</p>
-        <p>Phone: (585) 483-6418</p>
+        <h1>Alexander Smith,</h1>
         <img src="images/Headshot.JPG" width="200">
 
         <h2>Education:</h2>
-        <p>Virginia Tech, Blacksburg— Expected Graduation 2028</p>
-        <p>Major: Computer Science</p>
-        <p>GPA: 3.86</p>
-        <p>Deep Run High School</p>
-        <p>GPA: 4.55 |  Top 10% of Class</p>
+        <p>
+            Virginia Tech, Blacksburg <br>
+            Expected Graduation 2028 <br>
+            Major: Computer Science <br>
+            GPA: 3.86 <br>
+            <br>
+            Deep Run High School <br>
+            GPA: 4.55 |  Top 10% of Class
+        </p>
+
+        <h2>Technical Skills:</h2>
+        <p>
+            Programming Languages - Java, Python, C#, JS, CSS, HTML <br>
+            Version Control - Git, GitHub
+        </p>
 
         <h2>Awards:</h2>
         <p>Dean's List with Distinction Standing Fall 2024</p>
@@ -42,9 +49,11 @@
     </div>
     <div class="tab-content" id="content-1">
         <h1>Auto Clicker Project</h1>
-        <p>Main functionality consists of two separate python files.</p>
-        <p>One named Click_Playback records where you click on the screen and can be replayed by pressing "p".</p>
-        <p>Color Clicker clicks the first instance of a color when you press "p". In order to select a color, just click your desired color and press "l" to lock that color.</p>
+        <p>
+            Main functionality consists of two separate python files. <br>
+            One named Click_Playback records where you click on the screen and can be replayed by pressing "p". <br>
+            Color Clicker clicks the first instance of a color when you press "p". In order to select a color, just click your desired color and press "l" to lock that color. <br>
+        </p>
     </div>
     <div class="tab-content" id="content-2">
         <h1>Vision Project</h1>
@@ -57,9 +66,9 @@
         // Get the canvas element and set its width and height
         const canvas = document.getElementById('backgroundCanvas');
         const ctx = canvas.getContext('2d');
-        const width = window.innerWidth;
-        const height = window.innerHeight;
-
+        
+        const width = window.outerWidth;
+        const height = window.outerHeight;
         canvas.width = width;
         canvas.height = height;
 
@@ -76,7 +85,7 @@
         }
 
         // Get current date and time
-        function currentDay() {
+        function openTime() {
             const now = new Date();
             const year = now.getFullYear();
             const month = String(now.getMonth() + 1).padStart(2, '0');
@@ -134,8 +143,10 @@
 
         // Set up the canvas and click event listener
         canvas.addEventListener('click', function(event) {
-            const x = event.clientX;
-            const y = event.clientY;
+            const rect = canvas.getBoundingClientRect();
+
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
             const pixel = ctx.getImageData(x, y, 1, 1);
             const color = pixel.data;
             colorClicked = `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${color[3] / 255})`;
@@ -152,8 +163,8 @@
             requestAnimationFrame(animate);  // Continuously call the animate function
         }
 
-        // Display current time and initialize canvas
-        setInterval(currentDay(), 1000)
+        // Display time the site was opened and initialize canvas
+        openTime();
         showTabContent(0);
         rippleEffect(canvas.width/2, canvas.height/2, `rgba(0, 0, 0, 0)`);
         document.getElementById('click-prompt').style.textAlign = 'center';
