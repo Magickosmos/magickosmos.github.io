@@ -37,6 +37,8 @@ body {
     display: none;
     z-index: 10;
     position: absolute;
+    background-color: black;
+    border-right: 2px solid grey;
 }
 
 .active-tab {
@@ -51,11 +53,11 @@ body {
 }
 
 p {
-    text-indent: 30px;
+    padding-left: 30px;
     z-index: 10;
 }
 
-h1 {
+h1, h2 {
     z-index: 10;
 }
 
@@ -70,4 +72,5 @@ canvas {
     left: 0;
     z-index: 5;
     position: absolute;
+    border-bottom: 2px solid gray;
 }

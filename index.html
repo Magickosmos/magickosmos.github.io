@@ -7,6 +7,7 @@
     <title>Magickosmos Portfolio</title>
 </head>
 <body>
+
     <!-- Tab navigation -->
     <div class="tabs">
         <div class="tab" onclick="showTabContent(0)">Home</div>
@@ -14,40 +15,71 @@
         <div class="tab" onclick="showTabContent(2)">Vision</div>
     </div>
 
+    <h1 id="click-prompt">Try clicking around</h1>
+
     <!-- Tab content sections -->
     <div class="tab-content" id="content-0">
-        <h1>Alexander Smith, Commit 87</h1>
+        <h1>Alexander Smith,</h1>
         <img src="images/Headshot.JPG" width="200">
+
         <h2>Education:</h2>
-        <p>Virginia Tech, Blacksburg— Expected Graduation 2028</p>
-        <p>Major: Computer Science</p>
-        <p>GPA: 3.86</p>
-        <p>Deep Run High School</p>
-        <p>GPA: 4.55 |  Top 10% of Class</p>
+        <p>
+            Virginia Tech, Blacksburg <br>
+            Expected Graduation 2028 <br>
+            Major: Computer Science <br>
+            GPA: 3.86 <br>
+            <br>
+            Deep Run High School <br>
+            GPA: 4.55 |  Top 10% of Class
+        </p>
+
+        <h2>Technical Skills:</h2>
+        <p>
+            Programming Languages - Java, Python, C#, JS, CSS, HTML <br>
+            Version Control - Git, GitHub <br>
+            Other tools: Matlab, Solidworks, Unity
+        </p>
+
+        <h2>Awards:</h2>
+        <p>Dean's List with Distinction Standing Fall 2024</p>
+
+        <h2>Site Data:</h2>
         <p id="current-date-time"></p>
         <p id="click-pose"></p>
         <p id="clicked-color"></p>
     </div>
     <div class="tab-content" id="content-1">
         <h1>Auto Clicker Project</h1>
-        <p>Main functionality consists of two separate python files.</p>
-        <p>One named Click_Playback records where you click on the screen and can be replayed by pressing "p".</p>
-        <p>Color Clicker clicks the first instance of a color when you press "p". In order to select a color, just click your desired color and press "l" to lock that color.</p>
+        <p>
+            Main functionality consists of two separate python files. <a href="https://github.com/Magickosmos/Mouse-Controller" target="_blank">Github Link</a> <br>
+            One named Click_Playback records where you click on the screen and can be replayed by pressing "p". <br>
+            <video width="960" height="540" controls>
+                <source src="images\ClickReplay.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <br>
+            Color Clicker clicks the first instance of a color when you press "p". In order to select a color, just click your desired color and press "l" to lock that color. <br>
+            <video width="960" height="540" controls>
+                <source src="images\ColorClickerVideo.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+        </p>
     </div>
     <div class="tab-content" id="content-2">
         <h1>Vision Project</h1>
         <p>Project works with transferring BMP files through various different color filters to try and speed up the process of defect detection.</p>
+        <img src="images/VisionProjectImage.png" width="600">
     </div>
 
     <canvas id="backgroundCanvas"></canvas>
 
     <script>
-        // Get the canvas element and set its width and height
         const canvas = document.getElementById('backgroundCanvas');
         const ctx = canvas.getContext('2d');
+        const textBox = document.getElementById('content-0');
+        
         const width = window.innerWidth;
         const height = window.innerHeight;
-
         canvas.width = width;
         canvas.height = height;
 
@@ -64,7 +96,7 @@
         }
 
         // Get current date and time
-        function currentDay() {
+        function openTime() {
             const now = new Date();
             const year = now.getFullYear();
             const month = String(now.getMonth() + 1).padStart(2, '0');
@@ -72,8 +104,8 @@
             const hours = String(now.getHours()).padStart(2, '0');
             const minutes = String(now.getMinutes()).padStart(2, '0');
             const seconds = String(now.getSeconds()).padStart(2, '0');
-            const formattedDate = `${hours}:${minutes}:${seconds} ${day}/${month}/${year}`;
-            document.getElementById('current-date-time').textContent = 'The current day and time is ' + formattedDate;
+            const formattedDate = `${hours}:${minutes}:${seconds} ${month}/${day}/${year}`;
+            document.getElementById('current-date-time').textContent = 'You opened this site at ' + formattedDate;
         }
 
         // Ripple properties for each individual ripple
@@ -122,14 +154,17 @@
 
         // Set up the canvas and click event listener
         canvas.addEventListener('click', function(event) {
-            const x = event.clientX;
-            const y = event.clientY;
+            const rect = canvas.getBoundingClientRect();
+
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
             const pixel = ctx.getImageData(x, y, 1, 1);
             const color = pixel.data;
             colorClicked = `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${color[3] / 255})`;
 
-            document.getElementById('click-pose').textContent = x + ', ' + y;
-            document.getElementById('clicked-color').textContent = colorClicked;
+            document.getElementById('click-prompt').textContent = '';
+            document.getElementById('click-pose').textContent = 'Clicked Position: ' + x + ', ' + y;
+            document.getElementById('clicked-color').textContent = 'Clicked Color:' + colorClicked;
             rippleEffect(x, y, colorClicked); 
         });
 
@@ -139,10 +174,13 @@
             requestAnimationFrame(animate);  // Continuously call the animate function
         }
 
-        // Display current time and initialize canvas
-        setInterval(currentDay(), 1000)
+        // Display time the site was opened and initialize canvas
+        openTime();
         showTabContent(0);
+        rippleEffect(canvas.width/2, canvas.height/2, `rgba(0, 0, 0, 0)`);
+        document.getElementById('click-prompt').style.textAlign = 'center';
         animate();  // Start the animation loop
+        canvas.height = Math.max(height, textBox.offsetHeight + 40);
     </script>
 </body>
 </html>
