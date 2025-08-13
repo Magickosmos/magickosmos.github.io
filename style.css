@@ -34,6 +34,7 @@ body {
 
 .tab-content {
     padding: 20px;
+    margin: 0;
     display: none;
     z-index: 10;
     position: absolute;
@@ -73,4 +74,11 @@ canvas {
     z-index: 5;
     position: absolute;
     border-bottom: 2px solid gray;
+}
+
+#prompt {
+      width: 400px;
+      height: 150px;
+      display: block;
+      margin-bottom: 10px;
 }

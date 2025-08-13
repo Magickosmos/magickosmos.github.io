@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Magickosmos Portfolio</title>
 </head>
+
 <body>
 
     <!-- Tab navigation -->
@@ -13,6 +15,7 @@
         <div class="tab" onclick="showTabContent(0)">Home</div>
         <div class="tab" onclick="showTabContent(1)">Auto Clicker</div>
         <div class="tab" onclick="showTabContent(2)">Vision</div>
+        <div class="tab" onclick="showTabContent(3)">Ask Ai About Me</div>
     </div>
 
     <h1 id="click-prompt">Try clicking around</h1>
@@ -22,22 +25,32 @@
         <h1>Alexander Smith,</h1>
         <img src="images/Headshot.JPG" width="200">
 
+        <h2>Experience:</h2>
+        <p>
+            Pharma Vision LLC (Summer 2025 Internship)<br>
+            <br>
+            Job Position: Software Developer <br>
+            Developed Software to demonstrate concepts of edge detection <br>
+            and speed up developement of kernels. Demo shown under Vision tab. <br>
+
+        </p>
+
         <h2>Education:</h2>
         <p>
             Virginia Tech, Blacksburg <br>
             Expected Graduation 2028 <br>
             Major: Computer Science <br>
-            GPA: 3.86 <br>
+            GPA: 3.87 <br>
             <br>
             Deep Run High School <br>
-            GPA: 4.55 |  Top 10% of Class
+            GPA: 4.55 | Top 10% of Class
         </p>
 
         <h2>Technical Skills:</h2>
         <p>
             Programming Languages - Java, Python, C#, JS, CSS, HTML <br>
             Version Control - Git, GitHub <br>
-            Other tools: Matlab, Solidworks, Unity
+            Other tools: AWS, Matlab, Solidworks, Unity
         </p>
 
         <h2>Awards:</h2>
@@ -51,24 +64,70 @@
     <div class="tab-content" id="content-1">
         <h1>Auto Clicker Project</h1>
         <p>
-            Main functionality consists of two separate python files. <a href="https://github.com/Magickosmos/Mouse-Controller" target="_blank">Github Link</a> <br>
+            Main functionality consists of two separate python files. <a
+                href="https://github.com/Magickosmos/Mouse-Controller" target="_blank">Github Link</a> <br>
             One named Click_Playback records where you click on the screen and can be replayed by pressing "p". <br>
             <video width="960" height="540" controls>
                 <source src="images\ClickReplay.mp4" type="video/mp4">
-              Your browser does not support the video tag.
+                Your browser does not support the video tag.
             </video>
             <br>
-            Color Clicker clicks the first instance of a color when you press "p". In order to select a color, just click your desired color and press "l" to lock that color. <br>
+            Color Clicker clicks the first instance of a color when you press "p". In order to select a color, just
+            click your desired color and press "l" to lock that color. <br>
             <video width="960" height="540" controls>
                 <source src="images\ColorClickerVideo.mp4" type="video/mp4">
-              Your browser does not support the video tag.
+                Your browser does not support the video tag.
             </video>
         </p>
     </div>
     <div class="tab-content" id="content-2">
-        <h1>Vision Project</h1>
-        <p>Project works with transferring BMP files through various different color filters to try and speed up the process of defect detection.</p>
+        <h1>Vision Project (Pharma Vision LLC)</h1>
+        <p>Project works with transferring BMP files through various different color filters and kernels to try and speed up the
+            process of defect detection. Various functions are present which make this easier such as resizing and kernel generation. 
+            Alongside other quality of life changes such as zooming in on cursor and image deletion.
+            Below is a video demo of the project at its current state with permission from Pharma Vision LLC.</p>
         <img src="images/VisionProjectImage.png" width="600">
+    </div>
+    <div class="tab-content" id="content-3">
+        <h1>Ask AI about me</h1>
+        <p style="padding: 0px 0;">Powered By Google Gemini hosted on AWS</p>
+        <textarea id="prompt" placeholder="Enter your prompt here..."></textarea>
+
+        <button onclick="submitPrompt()">Submit to Gemini</button>
+
+        <div id="response"></div>
+
+        <script>
+            async function submitPrompt() {
+                const instructions = `Please generate a short response about my resume to any questions, responses should not include 2nd person: 
+                Here is relevant information about me to answer questions. 
+                My name is Alexander Smith, I am a computer science major at Virginia Tech with a current GPA of 3.87 entering my Junior year. 
+                Many of my projects are hosted on my github 
+                I have experience with AWS Lambda which is where this bot is being queried
+                I have program experience with Python, Java, C#, JS, CSS, HTML
+                My current plans are to complete a degree in Masters of Engineering for Computer Science
+                Within Virgina tech I am part of a club called PIVOT which is interdisplinary between engineering, physics, and computer science
+                During summer 2025 I did an internshp through Pharma Vision LLC which had me developing software to be used in edge detection
+                From this point on it is the question:`;
+                const prompt = document.getElementById('prompt').value;
+                const responseDiv = document.getElementById('response');
+                responseDiv.textContent = 'Loading...';
+
+                try {
+                    const res = await fetch('https://qx23rvsae4.execute-api.us-east-1.amazonaws.com/production/gemini-api', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ instructions, prompt })
+                    });
+
+                    const data = await res.json();
+                    console.log('Raw response from server:', data);
+                    responseDiv.textContent = data.response || data.error || 'No response.';
+                } catch (err) {
+                    responseDiv.textContent = 'Error: ' + err.message;
+                }
+            }
+        </script>
     </div>
 
     <canvas id="backgroundCanvas"></canvas>
@@ -77,7 +136,7 @@
         const canvas = document.getElementById('backgroundCanvas');
         const ctx = canvas.getContext('2d');
         const textBox = document.getElementById('content-0');
-        
+
         const width = window.innerWidth;
         const height = window.innerHeight;
         canvas.width = width;
@@ -134,14 +193,14 @@
             // Loop through each ripple and draw it
             ripples.forEach((ripple, index) => {
                 if (ripple.growing) {
-                    ripple.size += 10/(ripple.size+1);
+                    ripple.size += 10 / (ripple.size + 1);
                     if (ripple.size >= ripple.maxSize) {
                         ripple.growing = false;
                     }
                 }
 
                 // Draw the current ripple
-                if(ripple.rippleColor === `rgba(0, 0, 0, 0)` || ripple.rippleColor === `rgba(0, 0, 0, 1)`){
+                if (ripple.rippleColor === `rgba(0, 0, 0, 0)` || ripple.rippleColor === `rgba(0, 0, 0, 1)`) {
                     ctx.fillStyle = 'white';
                 } else {
                     ctx.fillStyle = 'black';
@@ -153,7 +212,7 @@
         }
 
         // Set up the canvas and click event listener
-        canvas.addEventListener('click', function(event) {
+        canvas.addEventListener('click', function (event) {
             const rect = canvas.getBoundingClientRect();
 
             const x = event.clientX - rect.left;
@@ -165,7 +224,7 @@
             document.getElementById('click-prompt').textContent = '';
             document.getElementById('click-pose').textContent = 'Clicked Position: ' + x + ', ' + y;
             document.getElementById('clicked-color').textContent = 'Clicked Color:' + colorClicked;
-            rippleEffect(x, y, colorClicked); 
+            rippleEffect(x, y, colorClicked);
         });
 
         // Update function to continuously update ripples
@@ -177,10 +236,11 @@
         // Display time the site was opened and initialize canvas
         openTime();
         showTabContent(0);
-        rippleEffect(canvas.width/2, canvas.height/2, `rgba(0, 0, 0, 0)`);
+        rippleEffect(canvas.width / 2, canvas.height / 2, `rgba(0, 0, 0, 0)`);
         document.getElementById('click-prompt').style.textAlign = 'center';
         animate();  // Start the animation loop
         canvas.height = Math.max(height, textBox.offsetHeight + 40);
     </script>
 </body>
+
 </html>
