@@ -74,3 +74,10 @@ canvas {
     position: absolute;
     border-bottom: 2px solid gray;
 }
+
+#prompt {
+      width: 400px;
+      height: 150px;
+      display: block;
+      margin-bottom: 10px;
+}
