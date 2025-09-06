@@ -13,9 +13,10 @@
     <!-- Tab navigation -->
     <div class="tabs">
         <div class="tab" onclick="showTabContent(0)">Home</div>
-        <div class="tab" onclick="showTabContent(1)">Auto Clicker</div>
+        <div class="tab" onclick="showTabContent(1)">AI Defect Detect</div>
         <div class="tab" onclick="showTabContent(2)">Internship</div>
         <div class="tab" onclick="showTabContent(3)">Ask Ai About Me</div>
+        <div class="tab" onclick="showTabContent(4)">Auto Clicker</div>
     </div>
 
     <h1 id="click-prompt">Try clicking around</h1>
@@ -31,7 +32,7 @@
             <br>
             Job Position: Software Developer <br>
             Developed Software to demonstrate concepts of edge detection <br>
-            and speed up developement of kernels. Demo shown under Vision tab. <br>
+            and speed up developement of kernels. Demo shown under internship tab. <br>
 
         </p>
 
@@ -62,23 +63,25 @@
         <p id="clicked-color"></p>
     </div>
     <div class="tab-content" id="content-1">
-        <h1>Auto Clicker Project</h1>
+        <h1>AI Defect Detection</h1>
         <p>
-            Main functionality consists of two separate python files. <a
-                href="https://github.com/Magickosmos/Mouse-Controller" target="_blank">Github Link</a> <br>
-            One named Click_Playback records where you click on the screen and can be replayed by pressing "p". <br>
-            <video width="960" height="540" controls>
-                <source src="images\ClickReplay.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <br>
-            Color Clicker clicks the first instance of a color when you press "p". In order to select a color, just
-            click your desired color and press "l" to lock that color. <br>
-            <video width="960" height="540" controls>
-                <source src="images\ColorClickerVideo.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
+            For this project I expanded upon some of the ideas I learned from my Summer 2025 internship and
+            made programs to train and validate an AI to properly sort images into defect/no-defect folders.
+            Below is a demo of the slowed down human version where I am pressing "d" or "n" to move the image and an AI gives its prediction.
+            The defects being accessed are pieces of glass missing from syringe vials.
         </p>
+        <video width="960" height="540" controls>
+                <source src="images/AI_Predict.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+        </video>
+        <p>
+            For the second functionaliy of this project the AI can automatically do the same without human input.
+            Below is a demo showing how the defect/no-defect folders are populated with their respective images.
+        </p>
+        <video width="960" height="540" controls>
+                <source src="images/AI_Detect.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+        </video>
     </div>
     <div class="tab-content" id="content-2">
         <h1>Vision Project (Pharma Vision LLC)</h1>
@@ -142,6 +145,26 @@
                 }
             }
         </script>
+    </div>
+
+    <div class="tab-content" id="content-4">
+        <h1>Auto Clicker Project</h1>
+        <p>
+            Main functionality consists of two separate python files. <a
+                href="https://github.com/Magickosmos/Mouse-Controller" target="_blank">Github Link</a> <br>
+            One named Click_Playback records where you click on the screen and can be replayed by pressing "p". <br>
+            <video width="960" height="540" controls>
+                <source src="images\ClickReplay.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <br>
+            Color Clicker clicks the first instance of a color when you press "p". In order to select a color, just
+            click your desired color and press "l" to lock that color. <br>
+            <video width="960" height="540" controls>
+                <source src="images\ColorClickerVideo.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+        </p>
     </div>
 
     <canvas id="backgroundCanvas"></canvas>
