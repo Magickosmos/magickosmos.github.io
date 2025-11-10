@@ -46,6 +46,33 @@
             Deep Run High School <br>
             GPA: 4.55 | Top 10% of Class
         </p>
+        <h2>School Activities:</h2>
+        <strong>Mobile App Team at Virginia Tech</strong><br>
+        <em>Project Lead | Computer Vision, Figma, Roboflow, React, Python, Git</em><br>
+        <span>Blacksburg, VA</span><br>
+        <ul>
+            <li>Led team developing Chess Vision.</li>
+            <li>Trained model for piece detection.</li>
+            <li>Integrated real-time board tracking.</li>
+        </ul>
+
+        <strong>Pivot at Virginia Tech</strong><br>
+        <em>Software Developer | Flask, AWS, React Native, Node.js</em><br>
+        <span>Blacksburg, VA</span><br>
+        <ul>
+            <li>Built mobile stock update app.</li>
+            <li>Deployed Flask backend on AWS.</li>
+            <li>Collaborated across engineering teams.</li>
+        </ul>
+
+        <strong>BITS at Virginia Tech</strong><br>
+        <em>Software Developer | Tailwind, Node.js, Figma, Git</em><br>
+        <span>Blacksburg, VA</span><br>
+        <ul>
+            <li>Developed drone e-commerce site.</li>
+            <li>Created 3D product visualizations.</li>
+            <li>Improved client site engagement.</li>
+        </ul>
 
         <h2>Technical Skills:</h2>
         <p>
@@ -67,42 +94,49 @@
         <p>
             For this project I expanded upon some of the ideas I learned from my Summer 2025 internship and
             made programs to train and validate an AI to properly sort images into defect/no-defect folders.
-            Below is a demo of the slowed down human version where I am pressing "d" or "n" to move the image and an AI gives its prediction.
-            The defects being accessed are pieces of glass missing from syringe vials.
+            Below is a demo of the slowed down human version where I am pressing "d" or "n" to move the image and an AI
+            gives its prediction.
+            The defects being accessed are pieces of glass missing from syringes.
         </p>
         <video width="960" height="540" controls>
-                <source src="images/AI_Predict.mp4" type="video/mp4">
-                Your browser does not support the video tag.
+            <source src="images/AI_Predict.mp4" type="video/mp4">
+            Your browser does not support the video tag.
         </video>
         <p>
             For the second functionaliy of this project the AI can automatically do the same without human input.
             Below is a demo showing how the defect/no-defect folders are populated with their respective images.
         </p>
         <video width="960" height="540" controls>
-                <source src="images/AI_Detect.mp4" type="video/mp4">
-                Your browser does not support the video tag.
+            <source src="images/AI_Detect.mp4" type="video/mp4">
+            Your browser does not support the video tag.
         </video>
     </div>
     <div class="tab-content" id="content-2">
         <h1>Vision Project (Pharma Vision LLC)</h1>
-        <p>Project works with transferring BMP files through various different color filters and kernels to try and speed up the
-            process of defect detection. Various functions are present which make this easier such as resizing and kernel generation. 
+        <p>Project works with transferring BMP files through various different color filters and kernels to try and
+            speed up the
+            process of defect detection. Various functions are present which make this easier such as resizing and
+            kernel generation.
             Alongside other quality of life changes such as zooming in on cursor and image deletion.
             Below is a video demo of the project at its current state with permission from Pharma Vision LLC.</p>
         <video width="960" height="540" controls>
-                <source src="images\EdgeDetectDemo.mp4" type="video/mp4">
-                Your browser does not support the video tag.
+            <source src="images\EdgeDetectDemo.mp4" type="video/mp4">
+            Your browser does not support the video tag.
         </video>
         <p>
             As seen in the video you first are able to select a folder of BMP images to open or a singular image.
-            When the folder is open there is nothing previous so a brief error is thrown if you try to go back when nothing is previous.
-            Otherwise pressing next brings up the next image and once again throws an error if there are no remaining bmp images.
-            Other functionalities demonstrated in the demo include resizing images, deleting filters, changing the order and number of kernels applied, and applying filters to different images.
-            A secondary demo is below which shows one of the most important quality of life aspects of the program that being zooming in on cursor location.
+            When the folder is open there is nothing previous so a brief error is thrown if you try to go back when
+            nothing is previous.
+            Otherwise pressing next brings up the next image and once again throws an error if there are no remaining
+            bmp images.
+            Other functionalities demonstrated in the demo include resizing images, deleting filters, changing the order
+            and number of kernels applied, and applying filters to different images.
+            A secondary demo is below which shows one of the most important quality of life aspects of the program that
+            being zooming in on cursor location.
         </p>
         <video width="960" height="540" controls>
-                <source src="images\EdgeDetectZoom.mp4" type="video/mp4">
-                Your browser does not support the video tag.
+            <source src="images\EdgeDetectZoom.mp4" type="video/mp4">
+            Your browser does not support the video tag.
         </video>
     </div>
     <div class="tab-content" id="content-3">
@@ -121,9 +155,12 @@
                 My name is Alexander Smith, I am a computer science major at Virginia Tech with a current GPA of 3.87 entering my Junior year. 
                 Many of my projects are hosted on my github 
                 I have experience with AWS Lambda which is where this bot is being queried
-                I have program experience with Python, Java, C#, JS, CSS, HTML
+                I have program experience with Python, Java, C#, JS, CSS, HTML, C, Bash
                 My current plans are to complete a degree in Masters of Engineering for Computer Science
-                Within Virgina tech I am part of a club called PIVOT which is interdisplinary between engineering, physics, and computer science
+                Within Virgina tech I am part of a clubs called PIVOT, BITS, and Mobile App Team. 
+                Pivot is interdisplinary club between engineering, physics, and computer science.
+                In BITS I have worked on an ecommerce solution for a drone manufacturing company.
+                In mobile app team I lead 5 programmers in creating a product called Chess Vision which tracks real matches using CV to record them in formats similar to chess.com.
                 During summer 2025 I did an internshp through Pharma Vision LLC which had me developing software to be used in edge detection
                 From this point on it is the question:`;
                 const prompt = document.getElementById('prompt').value;
